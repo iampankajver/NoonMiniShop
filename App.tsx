@@ -29,7 +29,7 @@ const App = () => {
   return (
     <CartProvider>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
           <Tab.Screen name="Home" component={HomeStack} />
           <Tab.Screen name="Game" component={GameScreen} />
           <Tab.Screen name="Cart" component={CartScreen} />
