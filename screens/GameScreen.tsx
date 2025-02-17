@@ -15,23 +15,32 @@ const GameIntroScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-       {/* Animated Game Logo */}
-       <Animated.Image 
-        source={require("../assets/arrow-hit.jpg")}
-        style={styles.logo}
-        entering={FadeIn.duration(1000)}
-      />
-
-      {/* Title */}
+       {/* Title */}
       <Animated.Text style={styles.title} entering={FadeInDown.duration(800)}>
-        Welcome to Arrow Hit!
+        🏹 Welcome to Arrow Hit!
       </Animated.Text>
 
-      {/* Description */}
+      {/* Game Description */}
       <Animated.Text style={styles.description} entering={FadeInDown.duration(1000).delay(200)}>
-        🎯 Shoot arrows and win exciting discounts!  
+        🎯 Shoot arrows and win exciting discounts!{"\n"}
         🏆 Score high to unlock bigger rewards.
       </Animated.Text>
+
+      {/* How to Play */}
+      <Animated.Text style={styles.rules} entering={FadeInDown.duration(1200).delay(400)}>
+        🔹 Tap to shoot arrows at the rotating target.{"\n"}
+        🔹 Avoid hitting other arrows.{"\n"}
+        🔹 The higher your score, the bigger your reward!
+      </Animated.Text>
+
+      {/* Rewards */}
+      <Animated.Text style={styles.rewards} entering={FadeInDown.duration(1400).delay(600)}>
+        🎁 **Win Rewards!**{"\n"}
+        🎯 Score **50+ points** → Get **5% OFF**{"\n"}
+        🎯 Score **100+ points** → Unlock **10% discount**{"\n"}
+        🎯 Score **200+ points** → Win a **special surprise!**
+      </Animated.Text>
+
       <TouchableOpacity style={styles.button} onPress={() => setIsGameVisible(true)}>
         <Text style={styles.buttonText}>Start Game</Text>
       </TouchableOpacity>
@@ -48,7 +57,9 @@ const styles = StyleSheet.create({
   title: { fontSize: 22, fontWeight: "bold", marginBottom: 10 },
   description: { fontSize: 16, textAlign: "center", marginBottom: 20 },
   button: { backgroundColor: "blue", padding: 15, borderRadius: 5 },
-  buttonText: { color: "white", fontSize: 18 }
+  buttonText: { color: "white", fontSize: 18 },
+  rules: { fontSize: 16, color: "green", textAlign: "center", marginBottom: 10 },
+  rewards: { fontSize: 16, color: "black", textAlign: "center", fontWeight: "bold", marginBottom: 20 },
 });
 
 export default GameIntroScreen;
