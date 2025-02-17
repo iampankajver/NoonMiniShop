@@ -5,13 +5,37 @@ import Carousel from "react-native-snap-carousel";
 
 const { width } = Dimensions.get("window");
 
+const BANNER_DATA = [
+  {
+    "title": "Banner 1",
+    "imageMobile": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg",
+    "imageDesktop": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg"
+  },
+  {
+    "title": "Banner 2",
+    "imageMobile": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg",
+    "imageDesktop": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg"
+  },
+  {
+    "title": "Banner 3",
+    "imageMobile": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg",
+    "imageDesktop": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg"
+  },
+  {
+    "title": "Banner 4",
+    "imageMobile": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg",
+    "imageDesktop": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg"
+  },
+  {
+    "title": "Banner 5",
+    "imageMobile": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg",
+    "imageDesktop": "https://laz-img-cdn.alicdn.com/images/ims-web/TB1LLFTsljTBKNjSZFuXXb0HFXa.jpg_1200x1200.jpg"
+  }
+]
+
 const HomeScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
-  const [banners, setBanners] = useState([
-    "https://via.placeholder.com/400x200",
-    "https://via.placeholder.com/400x200",
-    "https://via.placeholder.com/400x200",
-  ]);
+  const [banners, setBanners] = useState(BANNER_DATA);
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products")
@@ -21,16 +45,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <Carousel
-        data={banners}
-        renderItem={({ item }) => (
-          <Image source={{ uri: item }} style={styles.banner} />
-        )}
-        sliderWidth={width}
-        itemWidth={width}
-        autoplay
-        loop
-      /> */}
+      
 
     <FlatList
       data={products}
@@ -45,6 +60,16 @@ const HomeScreen = ({ navigation }) => {
           <Text numberOfLines={2} style={styles.productDescription}>{item.description}</Text>
         </TouchableOpacity>
       )}
+      ListHeaderComponent={<Carousel
+        data={banners}
+        renderItem={({ item }) => (
+          <Image source={{ uri: item.imageMobile }} style={styles.banner} />
+        )}
+        sliderWidth={width}
+        itemWidth={width}
+        autoplay
+        loop
+      />}
     />
     </View>
   );

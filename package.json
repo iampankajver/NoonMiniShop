@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npx patch-package"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.1",
@@ -16,13 +17,14 @@
     "@react-navigation/native-stack": "^7.2.0",
     "@react-navigation/stack": "^7.1.1",
     "axios": "^1.7.9",
+    "patch-package": "^8.0.0",
     "react": "18.3.1",
     "react-native": "0.77.1",
     "react-native-gesture-handler": "^2.23.1",
     "react-native-reanimated": "^3.16.7",
     "react-native-safe-area-context": "^5.2.0",
     "react-native-screens": "^4.6.0",
-    "react-native-snap-carousel": "^3.9.1",
+    "react-native-snap-carousel": "3.9.1",
     "react-native-vector-icons": "^10.2.0",
     "react-redux": "^9.2.0"
   },

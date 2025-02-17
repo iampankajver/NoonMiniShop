@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import { CartContext } from "../context/CartContext";
+import Carousel from "react-native-snap-carousel";
+const { width } = Dimensions.get("window");
 
 const ProductDetailsScreen = ({ route }) => {
   const { item } = route.params;
@@ -10,7 +12,16 @@ const ProductDetailsScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <Carousel
+        data={[item.image, item.image]}
+        renderItem={({ item }) => (
+          <Image source={{ uri: item }} style={styles.banner} />
+        )}
+        sliderWidth={width}
+        itemWidth={width}
+        autoplay
+        loop
+      /> 
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.price}>${item.price}</Text>
       <Text style={styles.description}>{item.description}</Text>
@@ -22,6 +33,7 @@ const ProductDetailsScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  banner: { width: width - 40, height: 200, resizeMode: "cover" }, 
   container: { flex: 1, padding: 20 },
   image: { width: 300, height: 300, resizeMode: "contain" },
   title: { fontSize: 20, fontWeight: "bold" },
